@@ -7,7 +7,13 @@
 // Auth Controller Container
 const authController = {};
 
-authController.signupUser = (req, res, next) => {};
+authController.signupUser = (req, res, next) => {
+    try {
+        
+    } catch (error) {
+        
+    }
+};
 
 authController.loginUser = (req, res, next) => {};
 
