@@ -12,7 +12,7 @@ const { APPLICATION_SECRET } = require('../config');
 // Auth Controller Container
 const authController = {};
 
-authController.signupUser = (req, res, next) => {
+authController.signupUser = async (req, res, next) => {
     // Collecting Required Information from the Request Body
     const { fullName, email, password } = req.body;
     try {
@@ -53,7 +53,7 @@ authController.loginUser = async (req, res, next) => {
     }
 };
 
-authController.logoutUser = (req, res, next) => {
+authController.logoutUser = async (req, res, next) => {
     try {
 
     } catch (error) {
