@@ -2,9 +2,6 @@
  * Custom Utilities
  */
 
-// Utility Container
-const customUtilities = {};
-
 // Api Error Utility
 class ApiError extends Error {
     constructor({message, statusCode}) {
@@ -12,4 +9,8 @@ class ApiError extends Error {
         this.message = message;
         this.statusCode = statusCode;
     }
+};
+
+module.exports = {
+    ApiError,
 }
