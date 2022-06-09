@@ -17,7 +17,7 @@ const auth = (req, res, next) => {
         if (!decoded.user) throw new Error();
 
         // All good then proceed to next handler
-        res.user = decoded.user;
+        req.user = decoded.user;
         return next();
     } catch (error) {
         console.log(error);

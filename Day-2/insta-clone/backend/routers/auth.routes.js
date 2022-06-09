@@ -16,7 +16,7 @@ Router.post('/signup', authController.signupUser);
 Router.post('/login', authController.loginUser);
 
 /***********************
- * Unauthenticated Routes
+ * Authenticated Routes
  ************************/
 
 Router.post('/logout', auth, authController.logoutUser);
