@@ -19,6 +19,7 @@ const PostSchema = new Schema({
         ref: 'User',
     },
 }, {
+    // Add's two additional properties - createdAt & lastUpdated
     timestamps: true,
 });
 

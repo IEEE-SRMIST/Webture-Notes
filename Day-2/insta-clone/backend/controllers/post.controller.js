@@ -10,6 +10,15 @@ const { ApiError } = require('../utils/custom.util');
 // Post Controller Container
 const postController = {};
 
+/**
+ * @description Create a new post and reference the user creating it
+ * @api {POST} /api/post/create
+ * @access User
+ * @example 
+ * req.body = {
+ *  title: 'Hello, World!',
+ * }
+ */
 postController.createPost = async (req, res, next) => {
     // Collecting Required Information from Request Body and Middleware
     const { title } = req.body;
@@ -33,6 +42,11 @@ postController.createPost = async (req, res, next) => {
     }
 };
 
+/**
+ * @description Fetch all posts' along with the user information
+ * @api {GET} /api/post/
+ * @access Public
+ */
 postController.fetchAllPosts = async (req, res, next) => {
     try {
         // Fetch all posts as normal objects instead of documents
@@ -49,6 +63,16 @@ postController.fetchAllPosts = async (req, res, next) => {
     }
 };
 
+/**
+ * @description Update a post with its postId
+ * @api {PUT} /api/post/update
+ * @access User
+ * @example 
+ * req.body = {
+ *  title: 'Hello, there! "General Kenobi!"',
+ *  postId: 'asdf3qr13ifef-ifjrfu3eifj'
+ * }
+ */
 postController.updatePost = async (req, res, next) => {
     // Collecting Required Information from Request Body and Middleware
     const { title, postId } = req.body;
@@ -77,6 +101,15 @@ postController.updatePost = async (req, res, next) => {
     }
 };
 
+/**
+ * @description Delete a post with its postId
+ * @api {DELETE} /api/post/delete
+ * @access User
+ * @example 
+ * req.body = {
+ *  postId: 'asdf3qr13ifef-ifjrfu3eifj',
+ * }
+ */
 postController.deletePost = async (req, res, next) => {
     // Collecting Required Information from Request Body and Middleware
     const { postId } = req.body;

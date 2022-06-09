@@ -12,6 +12,18 @@ const { APPLICATION_SECRET } = require('../config');
 // Auth Controller Container
 const authController = {};
 
+/**
+ * @description Creates a new User, if successful, then returns user data with authToken to login
+ * @api {POST} /api/auth/signup
+ * @access Public
+ * @example 
+ * req.body = {
+ *  fullName: 'John Doe',
+ *  email: 'doe.john@example.com',
+ *  username: 'doe.john',
+ *  password: 'john.doe.123',
+ * }
+ */
 authController.signupUser = async (req, res, next) => {
     // Collecting Required Information from the Request Body
     const { fullName, email, password, username } = req.body;
@@ -48,6 +60,16 @@ authController.signupUser = async (req, res, next) => {
     }
 };
 
+/**
+ * @description Login user, and send user data with authToken
+ * @api {POST} /api/auth/login
+ * @access Public
+ * @example 
+ * req.body = {
+ *  user: 'doe.john' || 'doe.john@example.com',
+ *  password: 'john.doe.123',
+ * }
+ */
 authController.loginUser = async (req, res, next) => {
     // Collecting Required Information from the Request Body
     const { user, password } = req.body;
@@ -80,6 +102,11 @@ authController.loginUser = async (req, res, next) => {
     }
 };
 
+/**
+ * @description Logout user by clearing authToken
+ * @api {POST} /api/auth/logout
+ * @access User
+ */
 authController.logoutUser = async (req, res, next) => {
     try {
         // Clear Cookie For logging out

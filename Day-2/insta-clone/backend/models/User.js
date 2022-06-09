@@ -26,6 +26,7 @@ const UserSchema = new Schema({
         required: true,
     },
 }, {
+    // Add's two additional properties - createdAt & lastUpdated
     timestamps: true,
 });
 
