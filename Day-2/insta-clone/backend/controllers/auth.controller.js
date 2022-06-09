@@ -103,7 +103,7 @@ authController.loginUser = async (req, res, next) => {
 };
 
 /**
- * @description Logout user by clearing authToken
+ * @description Logout user by clearing authToken cookie
  * @api {POST} /api/auth/logout
  * @access User
  */
