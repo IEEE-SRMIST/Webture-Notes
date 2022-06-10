@@ -1,6 +1,6 @@
 import React from 'react'
 
-const newpost = () => {
+const Newpost = () => {
   return (
     <svg
           color="currentcolor"
@@ -44,4 +44,4 @@ const newpost = () => {
   )
 }
 
-export default newpost
+export default Newpost
