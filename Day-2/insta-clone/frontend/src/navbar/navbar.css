@@ -1,5 +1,3 @@
-@import url('//fonts.cdnfonts.com/css/billabong');
-
 .top-bar {
   background-color: var(--white);
   border-bottom: 1px solid var(--border-gray);
@@ -16,13 +14,6 @@
   align-items: center;
   max-width: 950px;
   margin: 0 auto;
-}
-
-.logo {
-  font-family: "billabong", sans-serif;
-  font-size: 22pt;
-  font-weight: bold;
-  margin-right: auto;
 }
 
 .search-input {
