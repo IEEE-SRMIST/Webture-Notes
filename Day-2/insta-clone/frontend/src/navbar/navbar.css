@@ -1,0 +1,81 @@
+@import url('//fonts.cdnfonts.com/css/billabong');
+
+.top-bar {
+  background-color: var(--white);
+  border-bottom: 1px solid var(--border-gray);
+  padding: 0.75rem 1rem;
+  position: sticky;
+  top: 0;
+  margin-bottom: 1.5rem;
+  z-index: 10;
+}
+
+.top-bar > nav {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  max-width: 950px;
+  margin: 0 auto;
+}
+
+.logo {
+  font-family: "billabong", sans-serif;
+  font-size: 22pt;
+  font-weight: bold;
+  margin-right: auto;
+}
+
+.search-input {
+  background-color: #efefef;
+  color: var(--text-gray);
+  height: 36px;
+  padding: 0 1rem;
+  display: flex;
+  align-items: center;
+  border-radius: 0.5rem;
+  flex: 1;
+  min-width: 0;
+  max-width: 250px;
+  margin: 0 1rem 0 2rem;
+  cursor: text;
+}
+
+.search-input > svg {
+  width: 16px;
+  height: auto;
+  margin-right: 0.75rem;
+}
+
+.search-input > input {
+  all: unset;
+  flex: 1;
+  min-width: 0;
+  color: var(--text-black);
+}
+
+.search-input > input::placeholder {
+  color: var(--text-gray);
+  font-weight: 300;
+}
+
+
+@media screen and (max-width: 560px) {
+  .search-input {
+    display: none;
+  }
+}
+
+.nav-item {
+  margin-left: 1rem;
+}
+
+.nav-item > svg {
+  width: 24px;
+  height: auto;
+}
+
+.profile-pic {
+  width: 24px;
+  height: 24px;
+  border-radius: 12px;
+}
