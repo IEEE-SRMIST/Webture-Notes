@@ -4,21 +4,22 @@ import { useNavigate } from 'react-router-dom';
 
 import './auth.css';
 
-axios.defaults.baseURL = 'https://ieee-petstagram.herokuapp.com';
+// axios.defaults.baseURL = 'https://ieee-petstagram.herokuapp.com';
+axios.defaults.baseURL = 'http://localhost:5000';
 
 const Auth = () => {
   const navigate = useNavigate();
 
   const [page, setPage] = useState('login');
 
-  useEffect(() => {
-    const user = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')) : null;
-    if (user) return navigate('/');
-  }, []);
-
   const switchPage = () => {
     setPage(page === 'login' ? 'signup' : 'login');
   }
+
+  useEffect(() => {
+    const user = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')) : null;
+    if (user) return navigate('/');
+  }, [])
 
   const Login = () => {
     const [username, setUsername] = useState('');
@@ -35,7 +36,9 @@ const Auth = () => {
         const response = await axios.post('/api/auth/login', data);
         if (response.status === 200) {
           const user = response.data.data.user;
+          const authToken = response.data.data.authToken;
           localStorage.setItem('user', JSON.stringify(user));
+          localStorage.setItem('authToken', authToken);
           alert('Login Successful!');
           navigate('/');
           return;
@@ -58,7 +61,7 @@ const Auth = () => {
           <div href='/auth' className='link'>Forgot Password?</div>
         </div>
         <div className='box'>
-          <p className=''>Don't have an account? <span className='navigate' onClick={() => {switchPage();setUsername('');setPassword('')}}>Sign up</span></p>
+          <p className=''>Don't have an account? <span className='navigate' onClick={() => { switchPage(); setUsername(''); setPassword('') }}>Sign up</span></p>
         </div>
       </div>
     )
@@ -80,8 +83,11 @@ const Auth = () => {
         const data = { username, email, password, fullName: name };
         const response = await axios.post('/api/auth/signup', data);
         if (response.status === 201) {
+          console.log(response.data)
           const user = response.data.data.user;
+          const authToken = response.data.data.authToken;
           localStorage.setItem('user', JSON.stringify(user));
+          localStorage.setItem('authToken', authToken);
           alert('Signup Successful!');
           navigate('/');
           return;
@@ -109,7 +115,7 @@ const Auth = () => {
           </form>
         </div>
         <div className='box'>
-          <p className=''>Have an account? <span className='navigate' onClick={() => {switchPage();setUsername('');setPassword('');setEmail('');setName('');}}>Login</span></p>
+          <p className=''>Have an account? <span className='navigate' onClick={() => { switchPage(); setUsername(''); setPassword(''); setEmail(''); setName(''); }}>Login</span></p>
         </div>
       </div>
     )

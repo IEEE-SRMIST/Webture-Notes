@@ -10,20 +10,25 @@ import Logout from '../assets/logout'
 
 import './navbar.css'
 
-axios.defaults.baseURL = 'https://ieee-petstagram.herokuapp.com'
+// axios.defaults.baseURL = 'https://ieee-petstagram.herokuapp.com'
+axios.defaults.baseURL = 'http://localhost:5000';
 
 const Navbar = () => {
   const navigate = useNavigate();
   const user = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')) : null;
 
   const handleLogout = async () => {
-    console.log('calling')
     try {
-      await axios.post('/api/auth/logout');
+      await axios.post('/api/auth/logout', null, {
+        headers: {
+          Authorization: localStorage.getItem("authToken") || '',
+        }
+      });
     } catch (error) {
     } finally {
-      navigate('/auth');
+      localStorage.removeItem('authToken');
       localStorage.removeItem('user');
+      navigate('/auth');
     }
   }
 

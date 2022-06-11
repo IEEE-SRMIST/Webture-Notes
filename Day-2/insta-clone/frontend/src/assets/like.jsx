@@ -3,7 +3,7 @@ import React from 'react'
 const Like = () => {
     return (
         <svg
-            class="like-btn"
+            className="like-btn"
             color="currentcolor"
             fill="currentcolor"
             viewBox="0 0 24 24"
