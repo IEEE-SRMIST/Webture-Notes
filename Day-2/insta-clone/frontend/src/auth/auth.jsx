@@ -4,8 +4,8 @@ import { useNavigate } from 'react-router-dom';
 
 import './auth.css';
 
-// axios.defaults.baseURL = 'https://ieee-petstagram.herokuapp.com';
-axios.defaults.baseURL = 'http://localhost:5000';
+axios.defaults.baseURL = 'https://ieee-petstagram.herokuapp.com';
+// axios.defaults.baseURL = 'http://localhost:5000';
 
 const Auth = () => {
   const navigate = useNavigate();

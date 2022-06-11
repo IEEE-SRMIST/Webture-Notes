@@ -10,8 +10,8 @@ import Logout from '../assets/logout'
 
 import './navbar.css'
 
-// axios.defaults.baseURL = 'https://ieee-petstagram.herokuapp.com'
-axios.defaults.baseURL = 'http://localhost:5000';
+axios.defaults.baseURL = 'https://ieee-petstagram.herokuapp.com'
+// axios.defaults.baseURL = 'http://localhost:5000';
 
 const Navbar = () => {
   const navigate = useNavigate();

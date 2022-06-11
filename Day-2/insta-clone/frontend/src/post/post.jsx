@@ -11,8 +11,8 @@ import pic1 from '../assets/pic1.jpg';
 
 import './post.css'
 
-// axios.defaults.baseURL = 'https://ieee-petstagram.herokuapp.com';
-axios.defaults.baseURL = 'http://localhost:5000';
+axios.defaults.baseURL = 'https://ieee-petstagram.herokuapp.com';
+// axios.defaults.baseURL = 'http://localhost:5000';
 
 const Post = ({ title, createdBy, createdAt, img, _id }) => {
 

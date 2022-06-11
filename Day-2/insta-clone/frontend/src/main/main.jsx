@@ -2,13 +2,10 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import "./main.css"
 import post1 from '../assets/post1.jpg'
-import post2 from '../assets/post2.jpg'
-import post3 from '../assets/post3.jpg'
-import post4 from '../assets/post4.jpg'
 import Post from '../post/post'
 
-// axios.defaults.baseURL = 'https://ieee-petstagram.herokuapp.com';
-axios.defaults.baseURL = 'http://localhost:5000';
+axios.defaults.baseURL = 'https://ieee-petstagram.herokuapp.com';
+// axios.defaults.baseURL = 'http://localhost:5000';
 
 const Main = () => {
     const [posts, setPosts] = useState([]);
