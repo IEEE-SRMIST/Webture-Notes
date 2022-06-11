@@ -6,6 +6,7 @@
 const express = require('express');
 const cookieParser = require('cookie-parser');
 const cors = require('cors');
+const wokeDyno = require('woke-dyno');
 const appRouter = require('./routers');
 const expressErrorHandler = require('./middlewares/error.middleware');
 const { ApiError } = require('./utils/custom.util');
@@ -16,10 +17,10 @@ const app = express();
 require('./database');
 
 // Setting up Middlewares
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(cors());
 
 // Application Routes
 app.use('/api', appRouter);
@@ -37,5 +38,6 @@ app.use(expressErrorHandler);
 
 // Initializing Server
 app.listen(PORT, () => {
+    wokeDyno('https://ieee-petstagram.herokuapp.com').start();
     console.log(`Server running on http://localhost:${PORT}`)
 });

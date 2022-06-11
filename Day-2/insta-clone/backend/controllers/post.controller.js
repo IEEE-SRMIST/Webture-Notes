@@ -103,7 +103,7 @@ postController.updatePost = async (req, res, next) => {
 
 /**
  * @description Delete a post with its postId
- * @api {DELETE} /api/post/delete
+ * @api {POST} /api/post/delete
  * @access User
  * @example 
  * req.body = {

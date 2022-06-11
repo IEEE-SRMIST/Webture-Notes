@@ -47,12 +47,11 @@ authController.signupUser = async (req, res, next) => {
         newUser = newUser.toObject();
         delete newUser.password;
 
-        // Create auth token and respond with cookie and user details
-        const authToken = jwt.sign({ user: newUser }, APPLICATION_SECRET, { expiresIn: '1d' });
-        res.cookie('authToken', authToken);
-        return res.status(200).json({
-            message: 'User login successful!',
-            data: { user: newUser },
+        // Create auth token and respond with user details
+        const authToken = jwt.sign({ user: loggedInUser }, APPLICATION_SECRET, { expiresIn: '1d' });
+        return res.status(201).json({
+            message: 'User signup successful!',
+            data: { user: newUser, authToken },
             success: true,
         });
     } catch (error) {
@@ -89,12 +88,11 @@ authController.loginUser = async (req, res, next) => {
         loggedInUser = loggedInUser.toObject();
         delete loggedInUser.password;
 
-        // Create auth token and respond with cookie and user details
+        // Create auth token and respond user details
         const authToken = jwt.sign({ user: loggedInUser }, APPLICATION_SECRET, { expiresIn: '1d' });
-        res.cookie('authToken', authToken);
         return res.status(200).json({
             message: 'User login successful!',
-            data: { user: loggedInUser },
+            data: { user: loggedInUser, authToken },
             success: true,
         });
     } catch (error) {

@@ -9,7 +9,7 @@ require('dotenv').config();
 const isProduction = process.env.NODE_ENV === 'production';
 
 // Assign Database URL based on App environment
-const DB_URL = isProduction ? DB_URL : 'mongodb://localhost:27017/Instagram';
+const DB_URL = isProduction ? process.env.DB_URL : 'mongodb://localhost:27017/Instagram';
 
 // Configuration Container
 const configuration = {

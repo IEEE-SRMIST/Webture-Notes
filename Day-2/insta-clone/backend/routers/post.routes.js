@@ -21,7 +21,7 @@ Router.post('/create', auth, postController.createPost);
 
 Router.put('/update', auth, postController.updatePost);
 
-Router.delete('/delete', auth, postController.deletePost);
+Router.post('/delete', auth, postController.deletePost);
 
 // Exporting Router
 module.exports = Router;
