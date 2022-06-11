@@ -1,42 +1,68 @@
-import React from 'react'
-import './navbar.css'
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 import profile from '../assets/profile.jpg'
 import Search from '../assets/search'
 import Home from '../assets/home'
 import Message from '../assets/message'
 import Newpost from '../assets/newpost'
+import Logout from '../assets/logout'
+
+import './navbar.css'
+
+axios.defaults.baseURL = 'https://ieee-petstagram.herokuapp.com'
 
 const Navbar = () => {
+  const navigate = useNavigate();
+  const user = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')) : null;
+
+  const handleLogout = async () => {
+    console.log('calling')
+    try {
+      await axios.post('/api/auth/logout');
+    } catch (error) {
+    } finally {
+      navigate('/auth');
+      localStorage.removeItem('user');
+    }
+  }
+
   return (
-    <header class="top-bar">
-    <nav>
-      <div class="logo">Petstagram</div>
-      <label class="search-input">
-        <Search/>
-        <input type="text" placeholder="Search" />
-      </label>
+    <header className="top-bar">
+      <nav>
+        <div className="logo">Petstagram</div>
+        <label className="search-input">
+          <Search />
+          <input type="text" placeholder="Search" />
+        </label>
 
-      <div class="nav-item">
-        <Home/>
-      </div>
-
-      <div class="nav-item">
-        <Message/>
-      </div>
-
-      <div class="nav-item">
-        <Newpost/>
+        <div className="nav-item">
+          <Home />
         </div>
 
-      <div class="nav-item">
-        <img
-          class="profile-pic"
-          src={profile}
-          alt="Profile pic"
-        />
-      </div>
-    </nav>
-  </header>
+        <div className="nav-item">
+          <Message />
+        </div>
+
+        <div className="nav-item">
+          <Newpost />
+        </div>
+
+        <div className="nav-item" onClick={() => navigate('/auth')}>
+          <img
+            className="profile-pic"
+            src={profile}
+            alt="Profile pic"
+          />
+        </div>
+
+        <div className='nav-item' onClick={handleLogout}>
+          {
+            user ? <Logout /> : null
+          }
+        </div>
+      </nav>
+    </header>
   )
 }
 
