@@ -1,0 +1,13 @@
+ 
+
+ 
+  /* News Feed */
+  
+  .news-feed-wrapper {
+    padding: 0 0.5rem;
+  }
+  
+  .news-feed {
+    max-width: 480px;
+    margin: 0 auto;
+  }
