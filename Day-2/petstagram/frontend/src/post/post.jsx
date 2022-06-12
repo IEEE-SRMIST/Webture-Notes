@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import axios from 'axios';
 import Bars from '../assets/bars';
 import Like from '../assets/like';
@@ -15,6 +15,7 @@ axios.defaults.baseURL = 'https://ieee-petstagram.herokuapp.com';
 // axios.defaults.baseURL = 'http://localhost:5000';
 
 const Post = ({ title, createdBy, createdAt, img, _id }) => {
+    const [like, setLike] = useState(false);
 
     const handlePostDelete = async () => {
         console.log(`going to delete post with id ${_id}`)
@@ -54,7 +55,7 @@ const Post = ({ title, createdBy, createdAt, img, _id }) => {
                 <img src={img} alt={title} />
             </figure>
             <div className="actions">
-                <Like />
+                <Like onPress={() => setLike(!like)} like={like}/>
                 <Comment />
                 <Share />
                 <Save />
